@@ -17,18 +17,21 @@
 10. Crear GPO para que este grupo se agregué al grupo local "administrators" de todos los servidores. (Vincular GPO a la OU Servidores).
 11. Crear VM Windows Server 2019 Core, implementar una CA Root Enterprise SHA2 y moverla  a la OU correspondiente.
     * Pregunta: ¿Es recomendable mover de OU los controladores de dominio?
+    * Realizar configuración de AutoEnrollment para usuarios y equipos con template generico.
 12. Implementar LDAPS en ambos controladores de dominio.
-13. Crear VM Windows Server 2019 Core. Crear otro forest. (Forest 2)
-14. Crear relación de confianza de tipo forest entre los dos bosques previamente creados.
-15. En el Forest 1 (el que se creó primero), implementar dos servidores (WS 2019 core) para File Server (DFSN y DFSR). Crear una carpeta compartida y verificar alta disponibilidad.
-16. Nueva VM en Forest 1, implementar WSUS. El servidor debe ser la fuente de actualización de todos los servidores del laboratorio. Tener en cuenta que servidores productivos no deben actualizarse de manera automatica. Usar disco diferenciado para updates.
-17. Actualizar todos los servidores mediante WSUS de ambos forests. 
-18. Instalar dos servidores más en el Forest 1. Implementar cluster MSSQL HA (Always On). Realizar failover manual. Replicación debe ser sincrona. Revisar mejor práctica de volumes de Windows para la BD, logs, etc.
-19. Para liberar recursos, eliminar las dos VM de File Servers.
-20. Crear dos VM adicionales en el Forest 1. Configurar rol DHCP en alta disponibilidad. Crear un scope con una subnet ficticia (Azure no soporta VM con IP Dinamicas desde un servidor Windows).
-21. Realizar backup de rol DHCP. Buscar logs.
-22. Para liberar recursos, eliminar las dos VM DHCP. ¿Luego de eliminarlas, se debe hacer una modificación en Active Directory
-23. Implementar dos VM  en el Forest 1. En ambas instalar IIS.
+13. Crear VM e instalar Veeam Backup & Replication. Crear job para los dos DC. Configurar ApplicationAware.
+    * Realizar restore de objetos granular de Active Directory.
+14. Crear VM Windows Server 2019 Core. Crear otro forest. (Forest 2)
+15. Crear relación de confianza de tipo forest entre los dos bosques previamente creados.
+16. En el Forest 1 (el que se creó primero), implementar dos servidores (WS 2019 core) para File Server (DFSN y DFSR). Crear una carpeta compartida y verificar alta disponibilidad.
+17. Nueva VM en Forest 1, implementar WSUS. El servidor debe ser la fuente de actualización de todos los servidores del laboratorio. Tener en cuenta que servidores productivos no deben actualizarse de manera automatica. Usar disco diferenciado para updates.
+18. Actualizar todos los servidores mediante WSUS de ambos forests. 
+19. Instalar dos servidores más en el Forest 1. Implementar cluster MSSQL HA (Always On). Realizar failover manual. Replicación debe ser sincrona. Revisar mejor práctica de volumes de Windows para la BD, logs, etc.
+20. Para liberar recursos, eliminar las dos VM de File Servers.
+21. Crear dos VM adicionales en el Forest 1. Configurar rol DHCP en alta disponibilidad. Crear un scope con una subnet ficticia (Azure no soporta VM con IP Dinamicas desde un servidor Windows).
+22. Realizar backup de rol DHCP. Buscar logs.
+23. Para liberar recursos, eliminar las dos VM DHCP. ¿Luego de eliminarlas, se debe hacer una modificación en Active Directory
+24. Implementar dos VM  en el Forest 1. En ambas instalar IIS.
     * Una VM cumplirá el rol de Reverse Proxy. Implementarlo, debe redireccionar tráfico a la segunda VM IIS.
     * La segunda VM Web Server brindará una página estatica. Hacer modificaciones en el HTML.
     * Implementar HTTPS mediante certificado público. (Se puede usar Let's encrypt).
