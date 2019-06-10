@@ -3,8 +3,8 @@
 ## General: Windows Server
 
 1. Crear VM de administración. Ésta VM es la única que debe tener acceso desde internet. Instalar herramientas RSAT.
-2. Crear una VM Windows Server 2019 Core. Crear una arquitectura 1 Forest 1 Domain, será DC01. 
-3. Crear una VM Windows Server 2019 Core, unirla al forest y agregarla como controlador de dominio, será DC02.
+2. Crear una VM Windows Server 2016 Core. Crear una arquitectura 1 Forest 1 Domain, será DC01. 
+3. Crear una VM Windows Server 2016 Core, unirla al forest y agregarla como controlador de dominio, será DC02.
 4. Modificar nombre de sitio y crear subnet correspondiente.
    * Hint: La subnet es que se creó en Azure.
 5. Mover roles FSMO a DC02.
@@ -21,7 +21,7 @@
 12. Implementar LDAPS en ambos controladores de dominio.
 13. Crear VM e instalar Veeam Backup & Replication. Crear job para los dos DC. Configurar ApplicationAware.
     * Realizar restore de objetos granular de Active Directory.
-14. Crear VM Windows Server 2019 Core. Crear otro forest. (Forest 2)
+14. Crear VM Windows Server 2016 Core. Crear otro forest. (Forest 2)
 15. Crear relación de confianza de tipo forest entre los dos bosques previamente creados.
 16. En el Forest 1 (el que se creó primero), implementar dos servidores (WS 2019 core) para File Server (DFSN y DFSR). Crear una carpeta compartida y verificar alta disponibilidad.
 17. Nueva VM en Forest 1, implementar WSUS. El servidor debe ser la fuente de actualización de todos los servidores del laboratorio. Tener en cuenta que servidores productivos no deben actualizarse de manera automatica. Usar disco diferenciado para updates.
