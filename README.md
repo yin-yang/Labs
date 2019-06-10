@@ -35,4 +35,4 @@
     * Una VM cumplirá el rol de Reverse Proxy. Implementarlo, debe redireccionar tráfico a la segunda VM IIS.
     * La segunda VM Web Server brindará una página estatica. Hacer modificaciones en el HTML.
     * Implementar HTTPS mediante certificado público. (Se puede usar Let's encrypt).
-25. Implementar LAPS. Se debe instalar de manera automatica en todos los Members Servers y Computadoras del Forest 1.
+25. Implementar LAPS. Se debe instalar de manera automatica en todos los Members Servers y Computadoras del Forest.
